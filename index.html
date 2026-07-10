@@ -379,6 +379,79 @@ window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(mensagem),"_blan
 }
 
 </script>
+  <script>
+
+function pegarValores(nome){
+
+let lista=[];
+
+document.querySelectorAll('input[name="'+nome+'"]:checked').forEach(item=>{
+
+lista.push(item.value);
+
+});
+
+return lista.join(", ");
+
+}
+
+function enviarWhatsApp(){
+
+if(!confirm("Deseja enviar este planejamento para a GilArt Marketing?")){
+
+return;
+
+}
+
+let sexo=document.querySelector('input[name="sexo"]:checked');
+
+let mensagem="";
+
+mensagem+="*📋 NOVO PLANEJAMENTO DE CAMPANHA*%0A%0A";
+
+mensagem+="*🎯 Objetivo:* "+pegarValores("objetivo")+" "+document.getElementById("outroObjetivo").value+"%0A%0A";
+
+mensagem+="*📢 Tipo de anúncio:* "+pegarValores("tipo")+"%0A";
+
+mensagem+="*📝 Descrição:* "+document.getElementById("descricao").value+"%0A%0A";
+
+mensagem+="*👥 Sexo:* "+(sexo?sexo.value:"Não informado")+"%0A";
+
+mensagem+="*🎂 Idade:* "+document.getElementById("idade").value+"%0A%0A";
+
+mensagem+="*📍 Região:* "+pegarValores("regiao")+" "+document.getElementById("outraRegiao").value+"%0A%0A";
+
+mensagem+="*☎ Contato:* "+document.getElementById("contato").value+"%0A%0A";
+
+mensagem+="*📂 Material:* "+pegarValores("material")+"%0A%0A";
+
+mensagem+="*⭐ Diferencial:* "+pegarValores("diferencial")+" "+document.getElementById("outroDif").value+"%0A%0A";
+
+mensagem+="*💰 Orçamento:* "+document.getElementById("orcamento").value+"%0A";
+
+mensagem+="*📅 Tempo:* "+document.getElementById("tempo").value+"%0A%0A";
+
+mensagem+="*🏢 Empresa:* "+document.getElementById("empresa").value+"%0A";
+
+mensagem+="*📍 Cidade:* "+document.getElementById("cidade").value+"%0A";
+
+mensagem+="*📱 Instagram:* "+document.getElementById("instagram").value+"%0A";
+
+mensagem+="*🌐 Site:* "+document.getElementById("site").value+"%0A%0A";
+
+mensagem+="Enviado pelo formulário da *GilArt Marketing*.";
+
+let numero="5579999145044";
+
+window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(mensagem),"_blank");
+
+}
+
+</script>
+
+</body>
+
+</html>
 
 </body>
 
