@@ -1,462 +1,266 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>GilArt Marketing | Planejamento de Campanhas</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --azul:#0057d8;
+    --azul-escuro:#003b8e;
+    --azul-claro:#1b7cff;
+    --amarelo:#ffd21c;
+    --verde:#25D366;
+    --verde-escuro:#1ebe5d;
+    --texto:#202938;
+    --cinza:#667085;
+    --borda:#e3e7ef;
+    --fundo:#f5f8fd;
 }
 
 body{
-
-font-family:'Poppins',sans-serif;
-
-background:linear-gradient(135deg,#003b8e,#0057d8,#1b7cff);
-
-background-attachment:fixed;
-
-padding:25px;
-
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    padding:25px;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.18), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,.15), transparent 25%),
+        linear-gradient(135deg,#002f73,#0057d8,#2383ff);
+    overflow-x:hidden;
 }
+
+/* =====================================================
+   DECORAÇÃO DO FUNDO
+===================================================== */
+
+.decoracao{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+}
+
+.papel{
+    position:absolute;
+    width:120px;
+    height:150px;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:8px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    animation:flutuar 9s ease-in-out infinite;
+}
+
+.papel::before,
+.papel::after{
+    content:"";
+    position:absolute;
+    left:18px;
+    right:18px;
+    height:5px;
+    border-radius:5px;
+    background:rgba(255,255,255,.35);
+}
+
+.papel::before{
+    top:35px;
+    box-shadow:
+        0 18px 0 rgba(255,255,255,.25),
+        0 36px 0 rgba(255,255,255,.2);
+}
+
+.papel::after{
+    top:105px;
+    width:45%;
+}
+
+.papel1{
+    top:8%;
+    left:3%;
+    transform:rotate(-18deg);
+}
+
+.papel2{
+    top:65%;
+    right:3%;
+    transform:rotate(17deg);
+    animation-delay:2s;
+}
+
+.papel3{
+    top:35%;
+    right:1%;
+    width:90px;
+    height:115px;
+    transform:rotate(-12deg);
+    animation-delay:4s;
+}
+
+.papel4{
+    bottom:3%;
+    left:5%;
+    width:85px;
+    height:110px;
+    transform:rotate(12deg);
+    animation-delay:6s;
+}
+
+.caneta{
+    position:absolute;
+    width:145px;
+    height:14px;
+    border-radius:20px;
+    background:rgba(255,255,255,.24);
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+    animation:flutuarCaneta 11s ease-in-out infinite;
+}
+
+.caneta::before{
+    content:"";
+    position:absolute;
+    right:-17px;
+    top:2px;
+    border-left:20px solid rgba(255,255,255,.3);
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+}
+
+.caneta::after{
+    content:"";
+    position:absolute;
+    left:20px;
+    top:3px;
+    width:35px;
+    height:8px;
+    border-radius:10px;
+    background:rgba(255,255,255,.22);
+}
+
+.caneta1{
+    top:22%;
+    right:7%;
+    transform:rotate(-35deg);
+}
+
+.caneta2{
+    bottom:18%;
+    left:2%;
+    transform:rotate(30deg);
+    animation-delay:3s;
+}
+
+@keyframes flutuar{
+    0%,100%{
+        margin-top:0;
+    }
+    50%{
+        margin-top:-25px;
+    }
+}
+
+@keyframes flutuarCaneta{
+    0%,100%{
+        transform:translateY(0) rotate(-35deg);
+    }
+    50%{
+        transform:translateY(-25px) rotate(-25deg);
+    }
+}
+
+/* =====================================================
+   CONTAINER
+===================================================== */
 
 .container{
-
-max-width:950px;
-
-margin:auto;
-
-background:#fff;
-
-border-radius:20px;
-
-overflow:hidden;
-
-box-shadow:0 20px 60px rgba(0,0,0,.30);
-
+    position:relative;
+    z-index:1;
+    max-width:980px;
+    margin:auto;
+    background:#fff;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 25px 70px rgba(0,20,60,.35);
 }
 
+/* =====================================================
+   TOPO
+===================================================== */
+
 .topo{
-
-background:linear-gradient(90deg,#0046c0,#0b6fff);
-
-padding:35px;
-
-text-align:center;
-
-color:#fff;
-
+    position:relative;
+    padding:40px 30px 35px;
+    text-align:center;
+    color:#fff;
+    background:
+        radial-gradient(circle at 15% 20%,rgba(255,255,255,.15),transparent 25%),
+        linear-gradient(135deg,#003b8e,#0057d8,#1677ff);
 }
 
 .topo img{
-
-width:190px;
-
-margin-bottom:15px;
-
-filter:drop-shadow(0 5px 12px rgba(0,0,0,.35));
-
+    width:200px;
+    max-width:80%;
+    margin-bottom:18px;
+    filter:drop-shadow(0 6px 14px rgba(0,0,0,.3));
 }
 
 .topo h1{
-
-font-size:33px;
-
-margin-bottom:8px;
-
+    font-size:34px;
+    font-weight:800;
+    margin-bottom:8px;
 }
 
 .topo p{
+    font-size:16px;
+    opacity:.95;
+}
 
-font-size:16px;
-
-opacity:.95;
-
+.subtitulo{
+    margin-top:8px;
+    color:var(--amarelo);
+    font-weight:700;
+    font-size:15px;
 }
 
 .aviso{
-
-margin-top:18px;
-
-background:#ffffff22;
-
-padding:15px;
-
-border-radius:12px;
-
-font-size:15px;
-
+    max-width:760px;
+    margin:22px auto 0;
+    padding:16px 20px;
+    border-radius:14px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.2);
+    font-size:14px;
+    line-height:1.6;
 }
 
+/* =====================================================
+   FORMULÁRIO
+===================================================== */
+
 .formulario{
-
-padding:35px;
-
+    padding:38px;
+    background:#fff;
 }
 
 .bloco{
+    margin-bottom:34px;
+    padding-bottom:30px;
+    border-bottom:1px solid #edf0f5;
+}
 
-margin-bottom:35px;
-
-padding-bottom:25px;
-
-border-bottom:1px solid #ececec;
-
+.bloco:last-of-type{
+    border-bottom:none;
 }
 
 .bloco h2{
-
-color:#0047b3;
-
-margin-bottom:15px;
-
-font-size:22px;
-
-}
-
-.grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-
-gap:12px;
-
-margin-bottom:15px;
-
-}
-
-label{
-
-display:block;
-
-padding:8px 0;
-
-cursor:pointer;
-
-}
-
-input[type=text],
-textarea{
-
-width:100%;
-
-padding:14px;
-
-border:1px solid #dcdcdc;
-
-border-radius:10px;
-
-font-size:15px;
-
-margin-top:10px;
-
-font-family:Poppins;
-
-}
-
-textarea{
-
-min-height:90px;
-
-resize:vertical;
-
-}
-
-input[type=checkbox],
-input[type=radio]{
-
-transform:scale(1.15);
-
-margin-right:8px;
-
-}
-
-.botao{
-
-width:100%;
-
-padding:18px;
-
-font-size:19px;
-
-font-weight:bold;
-
-background:#25D366;
-
-border:none;
-
-border-radius:12px;
-
-cursor:pointer;
-
-color:white;
-
-transition:.3s;
-
-}
-
-.botao:hover{
-
-background:#1eb858;
-
-transform:scale(1.02);
-
-}
-
-.rodape{
-
-background:#f4f6fb;
-
-padding:25px;
-
-text-align:center;
-
-color:#666;
-
-font-size:14px;
-
-}
-
-@media(max-width:700px){
-
-.topo h1{
-
-font-size:27px;
-
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="topo">
-
-<img src="logo.png">
-
-<h1>GilArt Marketing</h1>
-
-<p>Planejamento Inteligente para Google Ads, Meta Ads e Estratégias Digitais.</p>
-
-<div class="aviso">
-
-Preencha este formulário. Assim que finalizar, clique no botão e todas as respostas serão enviadas automaticamente para nosso WhatsApp.
-
-</div>
-
-</div>
-
-<div class="formulario">
-
-<div class="bloco">
-
-<h2>1️⃣ Objetivo da Campanha</h2>
-
-<div class="grid">
-
-<label><input type="checkbox" name="objetivo" value="Vender Produtos">Vender Produtos</label>
-
-<label><input type="checkbox" name="objetivo" value="Novos Clientes">Novos Clientes</label>
-
-<label><input type="checkbox" name="objetivo" value="WhatsApp">Receber mensagens</label>
-
-<label><input type="checkbox" name="objetivo" value="Ligações">Receber ligações</label>
-
-<label><input type="checkbox" name="objetivo" value="Site">Levar pessoas ao site</label>
-
-<label><input type="checkbox" name="objetivo" value="Marca">Divulgar a marca</label>
-
-</div>
-
-<input type="text" id="outroObjetivo" placeholder="Outro objetivo">
-
-</div>
-
-<div class="bloco">
-
-<h2>2️⃣ O que deseja anunciar?</h2>
-
-<div class="grid">
-
-<label><input type="checkbox" name="tipo" value="Produto">Produto</label>
-
-<label><input type="checkbox" name="tipo" value="Serviço">Serviço</label>
-
-<label><input type="checkbox" name="tipo" value="Promoção">Promoção</label>
-
-<label><input type="checkbox" name="tipo" value="Lançamento">Lançamento</label>
-
-<label><input type="checkbox" name="tipo" value="Vários Produtos">Vários Produtos</label>
-
-</div>
-
-<textarea id="descricao" placeholder="Explique rapidamente o que deseja anunciar"></textarea>
-
-</div>
-
-  <script>
-
-function pegarValores(nome){
-
-let lista=[];
-
-document.querySelectorAll('input[name="'+nome+'"]:checked').forEach(item=>{
-
-lista.push(item.value);
-
-});
-
-return lista.join(", ");
-
-}
-
-function enviarWhatsApp(){
-
-if(!confirm("Deseja enviar este planejamento para a GilArt Marketing?")){
-
-return;
-
-}
-
-let sexo=document.querySelector('input[name="sexo"]:checked');
-
-let mensagem="";
-
-mensagem+="*📋 NOVO PLANEJAMENTO DE CAMPANHA*%0A%0A";
-
-mensagem+="*🎯 Objetivo:* "+pegarValores("objetivo")+" "+document.getElementById("outroObjetivo").value+"%0A%0A";
-
-mensagem+="*📢 Tipo de anúncio:* "+pegarValores("tipo")+"%0A";
-
-mensagem+="*📝 Descrição:* "+document.getElementById("descricao").value+"%0A%0A";
-
-mensagem+="*👥 Sexo:* "+(sexo?sexo.value:"Não informado")+"%0A";
-
-mensagem+="*🎂 Idade:* "+document.getElementById("idade").value+"%0A%0A";
-
-mensagem+="*📍 Região:* "+pegarValores("regiao")+" "+document.getElementById("outraRegiao").value+"%0A%0A";
-
-mensagem+="*☎ Contato:* "+document.getElementById("contato").value+"%0A%0A";
-
-mensagem+="*📂 Material:* "+pegarValores("material")+"%0A%0A";
-
-mensagem+="*⭐ Diferencial:* "+pegarValores("diferencial")+" "+document.getElementById("outroDif").value+"%0A%0A";
-
-mensagem+="*💰 Orçamento:* "+document.getElementById("orcamento").value+"%0A";
-
-mensagem+="*📅 Tempo:* "+document.getElementById("tempo").value+"%0A%0A";
-
-mensagem+="*🏢 Empresa:* "+document.getElementById("empresa").value+"%0A";
-
-mensagem+="*📍 Cidade:* "+document.getElementById("cidade").value+"%0A";
-
-mensagem+="*📱 Instagram:* "+document.getElementById("instagram").value+"%0A";
-
-mensagem+="*🌐 Site:* "+document.getElementById("site").value+"%0A%0A";
-
-mensagem+="Enviado pelo formulário da *GilArt Marketing*.";
-
-let numero="5579999145044";
-
-window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(mensagem),"_blank");
-
-}
-
-</script>
-  <script>
-
-function pegarValores(nome){
-
-let lista=[];
-
-document.querySelectorAll('input[name="'+nome+'"]:checked').forEach(item=>{
-
-lista.push(item.value);
-
-});
-
-return lista.join(", ");
-
-}
-
-function enviarWhatsApp(){
-
-if(!confirm("Deseja enviar este planejamento para a GilArt Marketing?")){
-
-return;
-
-}
-
-let sexo=document.querySelector('input[name="sexo"]:checked');
-
-let mensagem="";
-
-mensagem+="*📋 NOVO PLANEJAMENTO DE CAMPANHA*%0A%0A";
-
-mensagem+="*🎯 Objetivo:* "+pegarValores("objetivo")+" "+document.getElementById("outroObjetivo").value+"%0A%0A";
-
-mensagem+="*📢 Tipo de anúncio:* "+pegarValores("tipo")+"%0A";
-
-mensagem+="*📝 Descrição:* "+document.getElementById("descricao").value+"%0A%0A";
-
-mensagem+="*👥 Sexo:* "+(sexo?sexo.value:"Não informado")+"%0A";
-
-mensagem+="*🎂 Idade:* "+document.getElementById("idade").value+"%0A%0A";
-
-mensagem+="*📍 Região:* "+pegarValores("regiao")+" "+document.getElementById("outraRegiao").value+"%0A%0A";
-
-mensagem+="*☎ Contato:* "+document.getElementById("contato").value+"%0A%0A";
-
-mensagem+="*📂 Material:* "+pegarValores("material")+"%0A%0A";
-
-mensagem+="*⭐ Diferencial:* "+pegarValores("diferencial")+" "+document.getElementById("outroDif").value+"%0A%0A";
-
-mensagem+="*💰 Orçamento:* "+document.getElementById("orcamento").value+"%0A";
-
-mensagem+="*📅 Tempo:* "+document.getElementById("tempo").value+"%0A%0A";
-
-mensagem+="*🏢 Empresa:* "+document.getElementById("empresa").value+"%0A";
-
-mensagem+="*📍 Cidade:* "+document.getElementById("cidade").value+"%0A";
-
-mensagem+="*📱 Instagram:* "+document.getElementById("instagram").value+"%0A";
-
-mensagem+="*🌐 Site:* "+document.getElementById("site").value+"%0A%0A";
-
-mensagem+="Enviado pelo formulário da *GilArt Marketing*.";
-
-let numero="5579999145044";
-
-window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(mensagem),"_blank");
-
-}
-
-</script> 
-
-
-
-</body>
-
-</html>
-<button class="botao" onclick="enviarWhatsApp()">
-📲 Enviar Planejamento pelo WhatsApp
-</button>
-</body>
-  
-</html>
+    color:
